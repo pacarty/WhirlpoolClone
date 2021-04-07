@@ -9,11 +9,11 @@ using Whirlpool.Models;
 
 namespace Whirlpool.Controllers
 {
-    public class ForumController : Controller
+    public class SubForumController : Controller
     {
         private readonly ILogger<HomeController> _logger;
 
-        public ForumController(ILogger<HomeController> logger)
+        public SubForumController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
