@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Whirlpool.Data;
+using Whirlpool.ForumData;
 
 namespace Whirlpool
 {
@@ -34,6 +35,10 @@ namespace Whirlpool
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+
+            services.AddDbContext<ForumContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("ForumConnection")));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

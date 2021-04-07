@@ -9,5 +9,6 @@ namespace Whirlpool.ViewModels
     public class SubForumVM
     {
         public SubForum SubForum { get; set; }
+        public string SubForumName { get; set; }
     }
 }
