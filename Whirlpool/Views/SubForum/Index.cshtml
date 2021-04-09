@@ -1,9 +1,22 @@
-﻿@{
+﻿@model IEnumerable<SubForumVM>
+
+@{
     ViewData["Title"] = "Forum Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Forum</h1>
     <p>Below will be a list of the subforums</p>
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var item in Model)
+        {
+            <p>@item.SubForumName</p>
+        }
+    }
+    else
+    {
+        <p>No subforums exist.</p>
+    }
 </div>
 
