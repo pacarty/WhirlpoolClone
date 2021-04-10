@@ -33,7 +33,7 @@ namespace Whirlpool.Controllers
             {
                 SubForumVM subVM = new SubForumVM();
                 subVM.SubForumName = item.SubName;
-
+                subVM.Topics = _context.Topics.Where(x => x.SubForumId == item.SubForumId).ToList();
                 subVMList.Add(subVM);
             }
 

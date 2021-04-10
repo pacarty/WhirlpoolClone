@@ -11,7 +11,12 @@
     {
         @foreach (var item in Model)
         {
-            <p>@item.SubForumName</p>
+            <h2>@item.SubForumName</h2>
+
+            @foreach(var i in item.Topics)
+            {
+                <p>@i.TopicName</p>
+            }
         }
     }
     else
