@@ -15,7 +15,7 @@
 
             @foreach(var i in item.Topics)
             {
-                <p>@i.TopicName</p>
+                <p>@i.TopicName <a asp-controller="Topic" asp-action="Index" asp-route-id="@i.TopicId">Go to Topic</a></p>
             }
         }
     }
