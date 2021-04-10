@@ -15,5 +15,6 @@ namespace Whirlpool.ForumData
         }
 
         public DbSet<SubForum> SubForums { get; set; }
+        public DbSet<Topic> Topics { get; set; }
     }
 }
