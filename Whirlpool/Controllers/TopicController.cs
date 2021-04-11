@@ -28,11 +28,28 @@ namespace Whirlpool.Controllers
         public IActionResult Index(int id)
         {
             Topic topic = _context.Topics.Find(id);
+
             TopicVM topicVM = new TopicVM
             {
                 TopicViewId = topic.TopicId,
                 TopicViewName = topic.TopicName
             };
+
+            List<ThreadVM> threadVMList = new List<ThreadVM>();
+
+            List<Thread> threads = _context.Threads.Where(x => x.TopicId == id).ToList();
+
+            foreach (Thread t in threads)
+            {
+                threadVMList.Add(
+                    new ThreadVM
+                    {
+                        ThreadViewId = t.ThreadId,
+                        ThreadViewName = t.ThreadName
+                    });
+            }
+
+            topicVM.Threads = threadVMList;
 
             return View(topicVM);
         }

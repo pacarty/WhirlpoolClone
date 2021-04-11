@@ -9,5 +9,6 @@ namespace Whirlpool.ViewModels
     {
         public int TopicViewId { get; set; }
         public string TopicViewName { get; set; }
+        public List<ThreadVM> Threads { get; set; }
     }
 }

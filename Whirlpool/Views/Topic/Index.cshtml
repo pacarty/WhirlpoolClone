@@ -10,4 +10,16 @@
     <p>@Model.TopicViewId</p>
     <h2>Topic Name</h2>
     <p>@Model.TopicViewName</p>
+    <h3>List of Threads</h3>
+    @if (Model != null && Model.Threads.Any())
+    {
+        @foreach (var item in Model.Threads)
+        {
+            <p>@item.ThreadViewName</p>
+        }
+    }
+    else
+    {
+        <p>No threads exist.</p>
+    }
 </div>
