@@ -32,8 +32,24 @@ namespace Whirlpool.Controllers
             foreach (SubForum item in dataList)
             {
                 SubForumVM subVM = new SubForumVM();
+                List<TopicVM> topicVMList = new List<TopicVM>();
+
                 subVM.SubForumName = item.SubName;
-                subVM.Topics = _context.Topics.Where(x => x.SubForumId == item.SubForumId).ToList();
+
+                List<Topic> topics = _context.Topics.Where(x => x.SubForumId == item.SubForumId).ToList();
+
+                foreach (Topic t in topics)
+                {
+                    topicVMList.Add(
+                        new TopicVM
+                        {
+                            TopicViewId = t.TopicId,
+                            TopicViewName = t.TopicName
+                        });
+                }
+
+                subVM.Topics = topicVMList;
+
                 subVMList.Add(subVM);
             }
 

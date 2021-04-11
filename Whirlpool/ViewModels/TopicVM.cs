@@ -7,6 +7,7 @@ namespace Whirlpool.ViewModels
 {
     public class TopicVM
     {
+        public int TopicViewId { get; set; }
         public string TopicViewName { get; set; }
     }
 }
