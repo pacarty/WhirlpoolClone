@@ -30,6 +30,7 @@ namespace Whirlpool.Controllers
             Topic topic = _context.Topics.Find(id);
             TopicVM topicVM = new TopicVM
             {
+                TopicViewId = topic.TopicId,
                 TopicViewName = topic.TopicName
             };
 
