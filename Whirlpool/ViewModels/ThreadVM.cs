@@ -9,5 +9,6 @@ namespace Whirlpool.ViewModels
     {
         public int ThreadViewId { get; set; }
         public string ThreadViewName { get; set; }
+        public List<MessageVM> MessageViews { get; set; }
     }
 }

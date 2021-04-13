@@ -35,6 +35,22 @@ namespace Whirlpool.Controllers
                 ThreadViewName = thread.ThreadName
             };
 
+            List<MessageVM> messageVMList = new List<MessageVM>();
+
+            List<Message> messages = _context.Messages.Where(x => x.ThreadId == id).ToList();
+
+            foreach (Message m in messages)
+            {
+                messageVMList.Add(
+                    new MessageVM
+                    {
+                        MessageViewId = m.MessageId,
+                        MessageViewContent = m.Content
+                    });
+            }
+
+            threadVM.MessageViews = messageVMList;
+
             return View(threadVM);
         }
 

@@ -10,4 +10,17 @@
     <p>@Model.ThreadViewId</p>
     <h2>Thread Name</h2>
     <p>@Model.ThreadViewName</p>
+    @if (Model != null && Model.MessageViews.Any())
+    {
+        <ul>
+        @foreach (var item in Model.MessageViews)
+        {
+            <li>@item.MessageViewContent</li>
+        }
+        </ul>
+    }
+    else
+    {
+        <p>No messages exist.</p>
+    }
 </div>
