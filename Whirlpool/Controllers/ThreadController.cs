@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -16,16 +17,19 @@ namespace Whirlpool.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ForumContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
         public ThreadController(
             ILogger<HomeController> logger,
-            ForumContext context)
+            ForumContext context,
+            UserManager<IdentityUser> userManager)
         {
             _logger = logger;
             _context = context;
+            _userManager = userManager;
         }
 
-        public IActionResult Index(int id)
+        public async Task<IActionResult> Index(int id)
         {
             Thread thread = _context.Threads.Find(id);
 
@@ -36,16 +40,18 @@ namespace Whirlpool.Controllers
             };
 
             List<MessageVM> messageVMList = new List<MessageVM>();
-
             List<Message> messages = _context.Messages.Where(x => x.ThreadId == id).ToList();
 
             foreach (Message m in messages)
             {
+                var user = await _userManager.FindByIdAsync(m.UserId);
+
                 messageVMList.Add(
                     new MessageVM
                     {
                         MessageViewId = m.MessageId,
-                        MessageViewContent = m.Content
+                        MessageViewContent = m.Content,
+                        UserName = user.UserName
                     });
             }
 

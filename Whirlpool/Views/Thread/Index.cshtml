@@ -15,7 +15,7 @@
         <ul>
         @foreach (var item in Model.MessageViews)
         {
-            <li>@item.MessageViewContent</li>
+            <li>User: @item.UserName, Message: @item.MessageViewContent</li>
         }
         </ul>
     }
