@@ -15,7 +15,7 @@
     {
         @foreach (var item in Model.Threads)
         {
-            <p>@item.ThreadViewName</p>
+            <p>@item.ThreadViewName <a asp-controller="Thread" asp-action="Index" asp-route-id="@item.ThreadViewId">Go to Thread</a></p>
         }
     }
     else
