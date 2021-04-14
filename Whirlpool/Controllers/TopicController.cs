@@ -11,7 +11,7 @@ using Whirlpool.ViewModels;
 
 namespace Whirlpool.Controllers
 {
-    [Route("SubForum/{controller}/{action}/{id}")]
+    // [Route("SubForum/{controller}/{action}/{id}")]
     public class TopicController : Controller
     {
         private readonly ILogger<HomeController> _logger;

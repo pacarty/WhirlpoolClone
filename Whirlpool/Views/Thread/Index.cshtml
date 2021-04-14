@@ -10,13 +10,20 @@
     <p>@Model.ThreadViewId</p>
     <h2>Thread Name</h2>
     <p>@Model.ThreadViewName</p>
+
+    <form asp-action="Create">
+        <input asp-for="MessageContent" />
+        <!---<input asp-for="ThreadViewId" type="hidden" />--->
+        <input type="submit" />
+    </form>
+
     @if (Model != null && Model.MessageViews.Any())
     {
         <ul>
-        @foreach (var item in Model.MessageViews)
-        {
-            <li>User: @item.UserName, Message: @item.MessageViewContent</li>
-        }
+            @foreach (var item in Model.MessageViews)
+            {
+                <li>User: @item.UserName, Message: @item.MessageViewContent</li>
+            }
         </ul>
     }
     else
