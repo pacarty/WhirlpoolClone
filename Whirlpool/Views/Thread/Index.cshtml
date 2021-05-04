@@ -8,6 +8,12 @@
     ViewData["Title"] = "Thread Page";
 }
 
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
 <div class="text-center">
     <h1 class="display-4">Forum</h1>
     <h2>Thread ID</h2>
@@ -17,12 +23,31 @@
 
     @if (Model != null && Model.MessageViews.Any())
     {
-        <ul>
-            @foreach (var item in Model.MessageViews)
-            {
-                <li>User: @item.UserName, Message: @item.MessageViewContent</li>
-            }
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Username
+                    </th>
+                    <th>
+                        Message
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.MessageViews)
+                {
+                    <tr>
+                        <td>
+                            @item.UserName
+                        </td>
+                        <td>
+                            @item.MessageViewContent
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     }
     else
     {
