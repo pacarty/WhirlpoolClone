@@ -1,4 +1,8 @@
-﻿@model ThreadVM
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model ThreadVM
 
 @{
     ViewData["Title"] = "Thread Page";
@@ -10,12 +14,6 @@
     <p>@Model.ThreadViewId</p>
     <h2>Thread Name</h2>
     <p>@Model.ThreadViewName</p>
-
-    <form asp-action="Create">
-        <input asp-for="MessageContent" />
-        <!---<input asp-for="ThreadViewId" type="hidden" />--->
-        <input type="submit" />
-    </form>
 
     @if (Model != null && Model.MessageViews.Any())
     {
@@ -30,4 +28,16 @@
     {
         <p>No messages exist.</p>
     }
-</div>
+
+    <!--TODO: Change this so that there is a reply button which displays the form when clicked-->
+    <!--The form should not be displayed until the user has clicked the reply button-->
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <form asp-action="Create">
+            <input asp-for="MessageContent" />
+            <input asp-for="ThreadViewId" type="hidden" />
+            <input type="submit" value="Post" />
+        </form>
+    }
+
+    </div>
