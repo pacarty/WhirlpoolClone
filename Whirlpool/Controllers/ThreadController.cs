@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Whirlpool.ForumData;
+using Whirlpool.IdentityData;
 using Whirlpool.Models;
 using Whirlpool.ViewModels;
 
@@ -19,12 +20,12 @@ namespace Whirlpool.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ForumContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
         public ThreadController(
             ILogger<HomeController> logger,
             ForumContext context,
-            UserManager<IdentityUser> userManager)
+            UserManager<ApplicationUser> userManager)
         {
             _logger = logger;
             _context = context;
