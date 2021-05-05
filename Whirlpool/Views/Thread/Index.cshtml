@@ -30,6 +30,12 @@
                         Username
                     </th>
                     <th>
+                        User Since
+                    </th>
+                    <th>
+                        User Posts
+                    </th>
+                    <th>
                         Message
                     </th>
                 </tr>
@@ -39,7 +45,13 @@
                 {
                     <tr>
                         <td>
-                            @item.UserName
+                            @item.User.UserName
+                        </td>
+                        <td>
+                            @item.User.UserDateCreated
+                        </td>
+                        <td>
+                            @item.User.UserTotalPosts
                         </td>
                         <td>
                             @item.MessageViewContent

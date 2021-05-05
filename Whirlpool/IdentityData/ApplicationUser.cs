@@ -8,5 +8,8 @@ namespace Whirlpool.IdentityData
 {
     public class ApplicationUser : IdentityUser
     {
+        public DateTime? CreatedDate { get; set; }
+        public int TotalPosts { get; set; }
+
     }
 }

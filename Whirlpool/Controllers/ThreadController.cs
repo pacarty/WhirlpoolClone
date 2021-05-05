@@ -45,6 +45,9 @@ namespace Whirlpool.Controllers
                 UserId = userId
             };
 
+            user.TotalPosts++;
+            await _userManager.UpdateAsync(user);
+
             await _context.Messages.AddAsync(msg);
             await _context.SaveChangesAsync();
 
@@ -73,7 +76,12 @@ namespace Whirlpool.Controllers
                     {
                         MessageViewId = m.MessageId,
                         MessageViewContent = m.Content,
-                        UserName = user.UserName
+                        User = new UserInfo
+                        {
+                            UserName = user.UserName,
+                            UserDateCreated = user.CreatedDate?.ToString("d"),
+                            UserTotalPosts = user.TotalPosts
+                        }       
                     });
             }
 

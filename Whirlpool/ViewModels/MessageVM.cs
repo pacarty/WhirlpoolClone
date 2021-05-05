@@ -9,6 +9,6 @@ namespace Whirlpool.ViewModels
     {
         public int MessageViewId { get; set; }
         public string MessageViewContent { get; set; }
-        public string UserName { get; set; }
+        public UserInfo User { get; set; }
     }
 }
