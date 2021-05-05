@@ -9,6 +9,7 @@ namespace Whirlpool.Models
     {
         public int MessageId { get; set; }
         public string Content { get; set; }
+        public DateTime? TimeCreated { get; set; }
         public int ThreadId { get; set; }
         public string UserId { get; set; }
     }

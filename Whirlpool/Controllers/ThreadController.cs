@@ -42,6 +42,7 @@ namespace Whirlpool.Controllers
             {
                 Content = threadVM.MessageContent,
                 ThreadId = threadVM.ThreadViewId,
+                TimeCreated = DateTime.Now,
                 UserId = userId
             };
 
@@ -76,6 +77,7 @@ namespace Whirlpool.Controllers
                     {
                         MessageViewId = m.MessageId,
                         MessageViewContent = m.Content,
+                        TimePosted = m.TimeCreated?.ToString("g"),
                         User = new UserInfo
                         {
                             UserName = user.UserName,
